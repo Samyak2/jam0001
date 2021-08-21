@@ -1,0 +1,26 @@
+start : list
+
+list : "(" operator expr_list ")"
+     | expr
+
+?expr_list : expr expr_list
+          | expr
+
+expr : SIGNED_NUMBER
+     | ESCAPED_STRING
+     | CNAME
+     | comment
+
+operator : MATH_OP
+         | CNAME
+
+comment : "!@" ANY "@!"
+
+ANY : /.+/
+MATH_OP : /\+|\-|\/|\*/
+
+%import common.ESCAPED_STRING
+%import common.SIGNED_NUMBER
+%import common.CNAME
+%import common.WS
+%ignore WS
