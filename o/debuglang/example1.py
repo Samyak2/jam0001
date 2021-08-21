@@ -1,7 +1,4 @@
-from parser import parser
+print("hello")
 
-program1 = """(+ 1 2)"""
-
-ast = parser.parse(program1)
-
-print(ast.pretty())
+# debug:true
+print("brr")

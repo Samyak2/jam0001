@@ -1,15 +1,14 @@
-start : list
+start : expr
+      | list
 
-list : "(" operator expr_list ")"
-     | expr
-
-?expr_list : expr expr_list
-          | expr
+list : "(" start ")"
+     | "(" start list ")"
 
 expr : SIGNED_NUMBER
      | ESCAPED_STRING
      | CNAME
      | comment
+     | MATH_OP
 
 operator : MATH_OP
          | CNAME
